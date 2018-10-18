@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private GameObject levelImage;
     private Text levelText;
-    private int level = 0;
+    //private int level = 0;
 
     void Start()
     {
@@ -50,10 +50,10 @@ public class Player : MonoBehaviour
         //Get a reference to our text LevelText's text component by finding it by name and calling GetComponent.
         levelText = GameObject.Find("LevelNumber").GetComponent<Text>();
         //level++;
-        level = level + 1;
+        AlwaysThere.level = AlwaysThere.level + 1;
         //Set the text of levelText to the string "Day" and append the current level number.
-        //levelText.text="Level "+level;
-        levelText.text = "Roll to the Exit !";
+        levelText.text="Level "+AlwaysThere.level;
+        //levelText.text = "Roll to the Exit !";
 
         //Set levelImage to active blocking player's view of the game board during setup.
         levelImage.SetActive(true);

@@ -5,21 +5,20 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class AlwaysThere : MonoBehaviour {
+    GameObject levelImage;
+    public static float level;
     public float LevelStartDelay = 1f;
-
-    private GameObject levelImage;
     private Text levelText;
-    private int level=0;
     private void Awake()
     {
-        DontDestroyOnLoad(GameObject.Find("AlwaysThere"));
-        //DontDestroyOnLoad(GameObject.Find("Canvas"));
-        //level = 0;
+        level = -1;
+        levelText = GameObject.Find("LevelNumber").GetComponent<Text>();
     }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("On Level Finished Loading");
-        //level++;
+        //level = level+1;
         InitGame();
     }
     private void OnEnable()
@@ -43,9 +42,11 @@ public class AlwaysThere : MonoBehaviour {
 
         //Get a reference to our text LevelText's text component by finding it by name and calling GetComponent.
         levelText = GameObject.Find("LevelNumber").GetComponent<Text>();
-        level++;
+        //level++;
+        AlwaysThere.level = AlwaysThere.level + 1;
         //Set the text of levelText to the string "Day" and append the current level number.
-        levelText.text = "Level " + level;
+        levelText.text = "Level " + AlwaysThere.level;
+        //levelText.text = "Roll to the Exit !";
 
         //Set levelImage to active blocking player's view of the game board during setup.
         levelImage.SetActive(true);
@@ -55,15 +56,9 @@ public class AlwaysThere : MonoBehaviour {
 
     }
 
-    void HideLevelImage()
-    {
-        Debug.Log("Hide Level Image");
-        //Disable the levelImage gameObject.
-        levelImage.SetActive(false);
-    }
-
     // Use this for initialization
     void Start () {
+        DontDestroyOnLoad(this.gameObject);
         levelImage = GameObject.Find("LevelImage");
     }
 
