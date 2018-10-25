@@ -876,7 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b922a070017f4f788c04dcd38c78bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jump: 10
+  jump: 6
   GameOver: {fileID: 1476562214}
 --- !u!50 &1801601462
 Rigidbody2D:
